@@ -11,38 +11,38 @@ const dropdownAlignment = (index: number) => {
 };
 ---
 
-<header class="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-xl">
-  <div class="shell flex min-h-[4.75rem] items-center justify-between gap-5">
-    <a href="/" aria-label={`${site.name} home`} class="flex items-center gap-3">
+<header class="site-header sticky top-0 z-40 border-b border-border/80 bg-background/95 shadow-[0_8px_30px_rgb(69_66_66/.06)] backdrop-blur-xl">
+  <div class="shell flex min-h-[4.75rem] items-center justify-between gap-3 py-2 sm:gap-5 xl:py-0">
+    <a href="/" aria-label={`${site.name} home`} class="group flex min-w-0 items-center gap-2.5 sm:gap-3">
       <img
         src="/logo.jpg"
         alt=""
         width="320"
         height="222"
-        class="h-12 w-[69px] rounded-sm object-cover"
+        class="h-11 w-16 shrink-0 rounded-md object-cover ring-1 ring-border/70 transition group-hover:ring-primary/50 sm:h-12 sm:w-[69px]"
       />
-      <span class="leading-tight">
-        <strong class="font-heading block text-lg font-semibold sm:text-xl">KC Endodontics</strong>
+      <span class="min-w-0 leading-tight">
+        <strong class="font-heading block truncate text-base font-semibold tracking-[-.01em] sm:text-xl">KC Endodontics</strong>
         <span class="hidden text-[0.64rem] font-bold uppercase tracking-[.17em] text-label sm:block">
           Endodontic Specialty Care
         </span>
       </span>
     </a>
 
-    <nav aria-label="Primary navigation" class="hidden items-center gap-4 text-[0.78rem] font-semibold xl:flex 2xl:gap-6">
+    <nav aria-label="Primary navigation" class="desktop-nav hidden self-stretch items-center gap-1 text-[0.74rem] font-bold xl:flex 2xl:gap-2 2xl:text-[0.78rem]">
       {navItems.map((item, index) => (
         "children" in item ? (
-          <div class="nav-group relative py-5">
+          <div class="nav-group relative flex h-full items-center py-2">
             <a
               href={item.href}
               aria-current={pathname === item.href ? "page" : undefined}
               class:list={[
-                "flex items-center gap-1.5 transition-colors hover:text-accent",
-                isActive(item.href) && "text-primary-dark",
+                "desktop-nav-link flex min-h-11 items-center gap-1.5 rounded-full px-2.5 transition-colors 2xl:px-3",
+                isActive(item.href) && "is-active text-primary-dark",
               ]}
             >
               {item.label}
-              <span aria-hidden="true" class="text-[.6rem] text-label">⌄</span>
+              <span aria-hidden="true" class="nav-chevron text-[.6rem] text-label">⌄</span>
             </a>
             <div class:list={[
               "nav-dropdown invisible absolute z-50 rounded-md border border-border bg-background p-4 opacity-0 shadow-[0_22px_55px_rgb(69_66_66/.16)]",
@@ -71,13 +71,16 @@ const dropdownAlignment = (index: number) => {
           <a
             href={item.href}
             aria-current={pathname === item.href ? "page" : undefined}
-            class:list={["transition-colors hover:text-accent", isActive(item.href) && "text-primary-dark"]}
+            class:list={[
+              "desktop-nav-link flex min-h-11 items-center rounded-full px-2.5 transition-colors 2xl:px-3",
+              isActive(item.href) && "is-active text-primary-dark",
+            ]}
           >{item.label}</a>
         )
       ))}
       <a
         href={site.phone.href}
-        class="button-primary min-h-11 shrink-0 px-5 py-2.5"
+        class="button-primary ml-1 min-h-11 shrink-0 whitespace-nowrap px-4 py-2.5 2xl:px-5"
         >Call The Office</a
       >
     </nav>
@@ -88,7 +91,7 @@ const dropdownAlignment = (index: number) => {
       aria-controls="mobileNavA"
       aria-expanded="false"
       aria-label="Open navigation"
-      class="nav-trigger h-11 w-11 rounded-full border border-border bg-background text-foreground xl:hidden"
+      class="nav-trigger inline-flex h-12 w-12 shrink-0 flex-col items-center justify-center gap-1 rounded-full border border-border bg-surface text-foreground shadow-[0_8px_24px_rgb(69_66_66/.08)] transition hover:border-primary/50 hover:bg-primary-soft focus-visible:border-primary xl:hidden"
     >
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -99,23 +102,24 @@ const dropdownAlignment = (index: number) => {
   <nav
     id="mobileNavA"
     aria-label="Mobile navigation"
-    class="hidden border-t border-border bg-background px-5 py-5 shadow-[0_18px_40px_rgb(69_66_66/.12)] xl:hidden"
+    class="mobile-nav-panel hidden max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain border-t border-border bg-background/98 py-3 shadow-[0_22px_50px_rgb(69_66_66/.14)] xl:hidden"
   >
-    <div class="mx-auto flex max-w-7xl flex-col font-semibold">
+    <div class="shell flex flex-col pb-4 font-semibold">
+      <p class="eyebrow px-3 pb-2 pt-1 text-primary-dark">Explore KC Endodontics</p>
       {navItems.map((item) => (
         "children" in item ? (
-          <details class="mobile-nav-group border-b border-border/70" open={isActive(item.href)}>
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-3.5">
+          <details class:list={["mobile-nav-group border-b border-border/70", isActive(item.href) && "mobile-nav-current"]} open={isActive(item.href)}>
+            <summary class="mobile-nav-summary flex min-h-[3.25rem] cursor-pointer list-none items-center justify-between gap-4 rounded-lg px-3 py-3.5 transition hover:bg-surface">
               <span>{item.label}</span>
               <span aria-hidden="true" class="mobile-nav-plus text-xl font-normal text-primary-dark">+</span>
             </summary>
-            <div class="grid gap-1 pb-4 pl-3 text-sm font-semibold text-copy sm:grid-cols-2">
+            <div class="grid gap-1 px-2 pb-4 text-sm font-semibold text-copy sm:grid-cols-2">
               {item.children.map((child) => (
                 <a
                   href={child.href}
                   aria-current={pathname === child.href ? "page" : undefined}
                   class:list={[
-                    "rounded-lg px-3 py-2.5 hover:bg-primary-soft hover:text-primary-dark",
+                    "flex min-h-11 items-center rounded-lg px-3 py-2.5 transition hover:bg-primary-soft hover:text-primary-dark",
                     pathname === child.href && "bg-primary-soft text-primary-dark",
                   ]}
                 >{child.label}</a>
@@ -127,17 +131,16 @@ const dropdownAlignment = (index: number) => {
             href={item.href}
             aria-current={pathname === item.href ? "page" : undefined}
             class:list={[
-              "border-b border-border/70 py-3.5",
+              "flex min-h-[3.25rem] items-center rounded-lg border-b border-border/70 px-3 py-3.5 transition hover:bg-surface",
               isActive(item.href) && "text-primary-dark",
             ]}
           >{item.label}</a>
         )
       ))}
-      <a
-        href={site.phone.href}
-        class="button-primary mt-5 w-full"
-        >Call {site.phone.display}</a
-      >
+      <div class="mt-5 grid gap-3 sm:grid-cols-2">
+        <a href={site.phone.href} class="button-primary w-full">Call {site.phone.display}</a>
+        <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" class="button-secondary w-full">Get Directions ↗</a>
+      </div>
     </div>
   </nav>
 </header>
@@ -179,9 +182,13 @@ const dropdownAlignment = (index: number) => {
   const panel = document.getElementById("mobileNavA");
 
   if (button && panel) {
+    const header = button.closest(".site-header");
+
     const setOpen = (open: boolean) => {
       panel.classList.toggle("hidden", !open);
       button.classList.toggle("is-open", open);
+      header?.classList.toggle("is-menu-open", open);
+      document.documentElement.classList.toggle("nav-is-open", open);
       button.setAttribute("aria-expanded", String(open));
       button.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
     };

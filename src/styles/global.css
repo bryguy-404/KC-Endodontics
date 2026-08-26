@@ -423,7 +423,13 @@ button {
 }
 
 .nav-trigger span + span {
-  margin-top: 0.25rem;
+  margin-top: 0;
+}
+
+.nav-trigger.is-open {
+  border-color: rgb(87 120 150 / 0.55);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
 }
 
 .nav-trigger.is-open span:nth-child(1) {
@@ -436,6 +442,26 @@ button {
 
 .nav-trigger.is-open span:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
+}
+
+.desktop-nav-link:hover,
+.desktop-nav-link:focus-visible {
+  background: rgb(232 240 245 / 0.72);
+  color: var(--color-primary-dark);
+}
+
+.desktop-nav-link.is-active {
+  background: var(--color-primary-soft);
+}
+
+.nav-chevron {
+  transition: transform 160ms ease;
+}
+
+.nav-group:hover .nav-chevron,
+.nav-group:focus-within .nav-chevron,
+.nav-group.is-open .nav-chevron {
+  transform: rotate(180deg);
 }
 
 .nav-dropdown {
@@ -496,6 +522,28 @@ button {
 
 .mobile-nav-plus {
   transition: transform 180ms ease;
+}
+
+.mobile-nav-summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-nav-current > .mobile-nav-summary {
+  color: var(--color-primary-dark);
+}
+
+.mobile-nav-panel {
+  scrollbar-gutter: stable;
+}
+
+.site-header.is-menu-open {
+  box-shadow: 0 18px 45px rgb(69 66 66 / 0.12);
+}
+
+@media (width < 80rem) {
+  html.nav-is-open {
+    overflow: hidden;
+  }
 }
 
 .service-card {
