@@ -1,0 +1,60 @@
+---
+import { site } from "../lib/site";
+
+const steps = [
+  {
+    number: "01",
+    title: "Call the office",
+    body: "Tell our team what you are experiencing so we can help you take the appropriate next step.",
+  },
+  {
+    number: "02",
+    title: "Evaluation",
+    body: "Dr. Moore will examine your tooth, review imaging, and discuss your diagnosis and treatment options.",
+  },
+  {
+    number: "03",
+    title: "Focused treatment",
+    body: "If treatment is needed, our team will explain what to expect and keep your comfort at the center of care.",
+  },
+  {
+    number: "04",
+    title: "Coordinated follow-up",
+    body: "We communicate with your restorative dentist so your final restoration and follow-up care stay connected.",
+  },
+];
+---
+
+<section id="expect-a" class="relative overflow-hidden bg-foreground py-20 text-white sm:py-24">
+  <div aria-hidden="true" class="absolute -right-24 -top-32 h-96 w-96 rounded-full border border-white/10"></div>
+  <div class="shell relative">
+    <div class="grid gap-7 lg:grid-cols-[.82fr_1.18fr] lg:items-end">
+      <div>
+        <p class="eyebrow text-white/55">What to expect</p>
+        <h2 class="font-heading mt-4 max-w-xl text-4xl font-semibold leading-tight tracking-[-.02em] sm:text-5xl">
+          A clear path from concern to care.
+        </h2>
+      </div>
+      <p class="max-w-2xl text-lg leading-8 text-white/75 lg:justify-self-end">
+        Your initial appointment will include a consultation explaining your
+        diagnosis and treatment options. Treatment may sometimes be completed
+        the same day; more complex cases may require a second appointment.
+      </p>
+    </div>
+
+    <ol class="mt-12 grid gap-px overflow-hidden rounded-md border border-white/15 bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((step) => (
+        <li class="bg-foreground/95 p-6 sm:p-7">
+          <span class="font-heading text-2xl font-semibold text-white/35">{step.number}</span>
+          <h3 class="font-heading mt-8 text-2xl font-semibold">{step.title}</h3>
+          <p class="mt-3 text-sm leading-6 text-white/68">{step.body}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-sm font-semibold text-white/70">In pain or facing an urgent dental concern?</p>
+      <a href={site.phone.href} class="button-inverse">Call {site.phone.display} <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

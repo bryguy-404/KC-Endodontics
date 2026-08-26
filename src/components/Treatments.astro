@@ -6,22 +6,38 @@ const treatments = [
     ordinal: "01",
     short: "Save the natural tooth",
     title: "Root canal treatment",
-    body: "Specialist care for a tooth that needs treatment within the root canal system.",
-    linkLabel: "Ask the office about treatment →",
+    body: "This treatment can save your natural tooth and prevent the need for an implant or bridge.",
+    href: `${site.legacyUrl}/procedures/root-canal/`,
+    linkLabel: "Explore root canal treatment →",
   },
   {
     ordinal: "02",
     short: "Renew previous care",
     title: "Endodontic retreatment",
-    body: "A focused next step when a previously treated tooth needs renewed endodontic attention.",
-    linkLabel: "Discuss retreatment →",
+    body: "A previously treated tooth may fail to heal or pain may continue months or years after treatment.",
+    href: `${site.legacyUrl}/procedures/endodontic-retreatment/`,
+    linkLabel: "Explore retreatment →",
   },
   {
     ordinal: "03",
     short: "Resolve complex concerns",
-    title: "Root canal surgery",
-    body: "Specialist guidance when root canal surgery, also called apicoectomy, is being considered.",
-    linkLabel: "Ask about surgical care →",
+    title: "Endodontic surgery",
+    body: "Surgery can help locate fractures or hidden canals and treat damaged root surfaces or surrounding bone.",
+    href: `${site.legacyUrl}/procedures/apicoectomy/`,
+    linkLabel: "Explore endodontic surgery →",
+  },
+];
+
+const focusedCare = [
+  {
+    title: "Cracked teeth",
+    body: "Specialist evaluation for pain when chewing, temperature sensitivity, or a suspected fracture.",
+    href: `${site.legacyUrl}/procedures/cracked-teeth/`,
+  },
+  {
+    title: "Traumatic injuries",
+    body: "Focused care for teeth that are chipped, displaced, knocked out, or affected by dental trauma.",
+    href: `${site.legacyUrl}/procedures/traumatic-injuries/`,
   },
 ];
 ---
@@ -51,12 +67,27 @@ const treatments = [
           <h3 class="font-heading mt-8 text-3xl font-semibold leading-tight">{treatment.title}</h3>
           <p class="mt-4 leading-7 text-copy">{treatment.body}</p>
           <a
-            href={site.phone.href}
+            href={treatment.href}
             class="mt-auto inline-flex items-center gap-2 pt-7 font-bold text-accent hover:underline"
           >
             {treatment.linkLabel}
           </a>
         </article>
+      ))}
+    </div>
+
+    <div class="mt-5 grid gap-5 md:grid-cols-2">
+      {focusedCare.map((item) => (
+        <a
+          href={item.href}
+          class="group flex items-start justify-between gap-6 rounded-md border border-border/90 bg-background p-6 transition hover:border-primary/50 hover:shadow-[0_16px_36px_rgb(69_66_66/.08)] sm:p-7"
+        >
+          <span>
+            <strong class="font-heading block text-2xl font-semibold">{item.title}</strong>
+            <span class="mt-2 block leading-7 text-copy">{item.body}</span>
+          </span>
+          <span aria-hidden="true" class="mt-1 text-xl text-accent transition-transform group-hover:translate-x-1">→</span>
+        </a>
       ))}
     </div>
   </div>

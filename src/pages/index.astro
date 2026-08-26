@@ -4,7 +4,9 @@ import UtilityBar from "../components/UtilityBar.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import StatBand from "../components/StatBand.astro";
+import Welcome from "../components/Welcome.astro";
 import Treatments from "../components/Treatments.astro";
+import PatientJourney from "../components/PatientJourney.astro";
 import Approach from "../components/Approach.astro";
 import QuoteBand from "../components/QuoteBand.astro";
 import Doctor from "../components/Doctor.astro";
@@ -12,14 +14,19 @@ import DualCta from "../components/DualCta.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout>
+<Layout
+  title="KC Endodontics | Endodontist in Prairie Village, KS"
+  description="KC Endodontics provides professional, compassionate endodontic specialty care in Prairie Village, Kansas, including root canal treatment, retreatment, and endodontic surgery."
+>
   <UtilityBar />
   <Header />
 
   <main id="main-a">
     <Hero />
     <StatBand />
+    <Welcome />
     <Treatments />
+    <PatientJourney />
     <Approach />
     <QuoteBand />
     <Doctor />

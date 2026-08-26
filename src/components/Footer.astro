@@ -3,7 +3,7 @@ import { site } from "../lib/site";
 ---
 
 <footer id="contact-a" class="bg-foreground text-white">
-  <div class="shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.15fr_.75fr_.75fr]">
+  <div class="shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.1fr_.75fr_.65fr_.65fr]">
     <div>
       <p class="eyebrow text-white/55">
         {site.name}
@@ -29,15 +29,30 @@ import { site } from "../lib/site";
         rel="noopener noreferrer"
         class="mt-4 inline-flex font-bold text-white underline underline-offset-4">View directions ↗</a
       >
+      <p class="mt-4 text-sm leading-6 text-white/60">Phone: {site.phone.display}<br />Fax: {site.fax}</p>
     </div>
 
-    <nav aria-label="Footer navigation" class="md:col-span-2 lg:col-span-1">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-[.16em] text-white/50">Office hours</p>
+      <dl class="mt-4 grid gap-3 text-sm text-white/80">
+        {site.hours.map((entry) => (
+          <div>
+            <dt class="font-semibold text-white">{entry.days}</dt>
+            <dd class="mt-0.5">{entry.hours}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <nav aria-label="Footer navigation">
       <p class="text-xs font-bold uppercase tracking-[.16em] text-white/50">Explore</p>
       <ul class="mt-4 grid gap-3 text-sm font-semibold text-white/80">
         <li><a href="#treatments-a" class="hover:text-white">Treatments</a></li>
+        <li><a href="#expect-a" class="hover:text-white">What to expect</a></li>
         <li><a href="#approach-a" class="hover:text-white">Why choose us</a></li>
         <li><a href="#doctor-a" class="hover:text-white">Meet Dr. Moore</a></li>
         <li><a href="#patients-a" class="hover:text-white">Patient information</a></li>
+        <li><a href="#referrals-a" class="hover:text-white">Referring dentists</a></li>
       </ul>
     </nav>
   </div>
@@ -45,7 +60,7 @@ import { site } from "../lib/site";
   <div class="border-t border-white/15 py-5">
     <div class="shell flex flex-col gap-2 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
       <span>{site.name} · Prairie Village, Kansas</span>
-      <span>Compassionate specialty care for your natural teeth.</span>
+      <span>© {new Date().getFullYear()} · Compassionate specialty care for your natural teeth.</span>
     </div>
   </div>
 </footer>
