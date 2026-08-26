@@ -4,6 +4,11 @@ import { site, navItems } from "../lib/site";
 const pathname = Astro.url.pathname;
 const isActive = (href: string) =>
   href === "/" ? pathname === "/" : pathname.startsWith(href);
+const dropdownAlignment = (index: number) => {
+  if (index === 0) return "nav-dropdown--start";
+  if (index >= 3) return "nav-dropdown--end";
+  return "nav-dropdown--center";
+};
 ---
 
 <header class="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-xl">
@@ -25,7 +30,7 @@ const isActive = (href: string) =>
     </a>
 
     <nav aria-label="Primary navigation" class="hidden items-center gap-4 text-[0.78rem] font-semibold xl:flex 2xl:gap-6">
-      {navItems.map((item) => (
+      {navItems.map((item, index) => (
         "children" in item ? (
           <div class="nav-group relative py-5">
             <a
@@ -40,8 +45,11 @@ const isActive = (href: string) =>
               <span aria-hidden="true" class="text-[.6rem] text-label">⌄</span>
             </a>
             <div class:list={[
-              "nav-dropdown invisible absolute left-1/2 top-[calc(100%-1px)] z-50 -translate-x-1/2 translate-y-2 rounded-md border border-border bg-background p-4 opacity-0 shadow-[0_22px_55px_rgb(69_66_66/.16)] transition",
-              item.columns === 2 ? "w-[42rem]" : "w-72",
+              "nav-dropdown invisible absolute z-50 rounded-md border border-border bg-background p-4 opacity-0 shadow-[0_22px_55px_rgb(69_66_66/.16)]",
+              dropdownAlignment(index),
+              item.columns === 2
+                ? "w-[min(42rem,calc(100vw-2rem))]"
+                : "w-72 max-w-[calc(100vw-2rem)]",
             ]}>
               <div class:list={["grid gap-1", item.columns === 2 && "grid-cols-2"]}>
                 {item.children.map((child) => (
@@ -135,6 +143,38 @@ const isActive = (href: string) =>
 </header>
 
 <script>
+  document.querySelectorAll<HTMLElement>(".nav-group").forEach((group) => {
+    let closeTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const openDropdown = () => {
+      if (closeTimer) window.clearTimeout(closeTimer);
+      group.classList.add("is-open");
+    };
+
+    const closeDropdown = () => {
+      if (closeTimer) window.clearTimeout(closeTimer);
+      group.classList.remove("is-open");
+    };
+
+    const scheduleClose = () => {
+      if (closeTimer) window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(closeDropdown, 240);
+    };
+
+    group.addEventListener("pointerenter", openDropdown);
+    group.addEventListener("pointerleave", scheduleClose);
+    group.addEventListener("focusin", openDropdown);
+    group.addEventListener("focusout", (event) => {
+      if (!group.contains(event.relatedTarget as Node | null)) scheduleClose();
+    });
+    group.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeDropdown();
+        group.querySelector<HTMLElement>("a")?.focus();
+      }
+    });
+  });
+
   const button = document.getElementById("navButtonA");
   const panel = document.getElementById("mobileNavA");
 
