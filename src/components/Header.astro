@@ -1,5 +1,9 @@
 ---
 import { site, navItems } from "../lib/site";
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
 ---
 
 <header class="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-xl">
@@ -24,7 +28,14 @@ import { site, navItems } from "../lib/site";
       {navItems.map((item) => (
         "children" in item ? (
           <div class="nav-group relative py-5">
-            <a href={item.href} class="flex items-center gap-1.5 transition-colors hover:text-accent">
+            <a
+              href={item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
+              class:list={[
+                "flex items-center gap-1.5 transition-colors hover:text-accent",
+                isActive(item.href) && "text-primary-dark",
+              ]}
+            >
               {item.label}
               <span aria-hidden="true" class="text-[.6rem] text-label">⌄</span>
             </a>
@@ -34,7 +45,14 @@ import { site, navItems } from "../lib/site";
             ]}>
               <div class:list={["grid gap-1", item.columns === 2 && "grid-cols-2"]}>
                 {item.children.map((child) => (
-                  <a href={child.href} class="rounded-lg px-3 py-2.5 leading-5 text-copy transition hover:bg-primary-soft hover:text-primary-dark focus-visible:bg-primary-soft">
+                  <a
+                    href={child.href}
+                    aria-current={pathname === child.href ? "page" : undefined}
+                    class:list={[
+                      "rounded-lg px-3 py-2.5 leading-5 text-copy transition hover:bg-primary-soft hover:text-primary-dark focus-visible:bg-primary-soft",
+                      pathname === child.href && "bg-primary-soft text-primary-dark",
+                    ]}
+                  >
                     {child.label}
                   </a>
                 ))}
@@ -42,7 +60,11 @@ import { site, navItems } from "../lib/site";
             </div>
           </div>
         ) : (
-          <a href={item.href} class="transition-colors hover:text-accent">{item.label}</a>
+          <a
+            href={item.href}
+            aria-current={pathname === item.href ? "page" : undefined}
+            class:list={["transition-colors hover:text-accent", isActive(item.href) && "text-primary-dark"]}
+          >{item.label}</a>
         )
       ))}
       <a
@@ -74,19 +96,33 @@ import { site, navItems } from "../lib/site";
     <div class="mx-auto flex max-w-7xl flex-col font-semibold">
       {navItems.map((item) => (
         "children" in item ? (
-          <details class="mobile-nav-group border-b border-border/70">
+          <details class="mobile-nav-group border-b border-border/70" open={isActive(item.href)}>
             <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-3.5">
               <span>{item.label}</span>
               <span aria-hidden="true" class="mobile-nav-plus text-xl font-normal text-primary-dark">+</span>
             </summary>
             <div class="grid gap-1 pb-4 pl-3 text-sm font-semibold text-copy sm:grid-cols-2">
               {item.children.map((child) => (
-                <a href={child.href} class="rounded-lg px-3 py-2.5 hover:bg-primary-soft hover:text-primary-dark">{child.label}</a>
+                <a
+                  href={child.href}
+                  aria-current={pathname === child.href ? "page" : undefined}
+                  class:list={[
+                    "rounded-lg px-3 py-2.5 hover:bg-primary-soft hover:text-primary-dark",
+                    pathname === child.href && "bg-primary-soft text-primary-dark",
+                  ]}
+                >{child.label}</a>
               ))}
             </div>
           </details>
         ) : (
-          <a href={item.href} class="border-b border-border/70 py-3.5">{item.label}</a>
+          <a
+            href={item.href}
+            aria-current={pathname === item.href ? "page" : undefined}
+            class:list={[
+              "border-b border-border/70 py-3.5",
+              isActive(item.href) && "text-primary-dark",
+            ]}
+          >{item.label}</a>
         )
       ))}
       <a

@@ -246,6 +246,173 @@ button {
   line-height: 1.55;
 }
 
+.referral-sheet {
+  margin-top: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  color: var(--color-foreground);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.referral-sheet__heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  border-bottom: 2px solid var(--color-primary-dark);
+  padding-bottom: 1.25rem;
+}
+
+.referral-sheet__heading div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.referral-sheet__heading strong {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+}
+
+.referral-sheet fieldset {
+  margin-top: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem;
+}
+
+.referral-sheet legend {
+  padding-inline: 0.45rem;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.referral-fields {
+  display: grid;
+  gap: 1rem;
+}
+
+.referral-sheet label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--color-foreground);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.referral-sheet input[type="text"],
+.referral-sheet input[type="tel"],
+.referral-sheet textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 0.4rem;
+  background: var(--color-background);
+  padding: 0.65rem 0.75rem;
+  color: var(--color-foreground);
+  font: inherit;
+  font-weight: 400;
+}
+
+.referral-sheet textarea {
+  resize: vertical;
+}
+
+.referral-sheet input:focus,
+.referral-sheet textarea:focus {
+  border-color: var(--color-accent);
+  outline: 3px solid rgb(51 122 183 / 0.2);
+  outline-offset: 1px;
+}
+
+.referral-checks {
+  display: grid;
+  gap: 0.75rem 1.25rem;
+  margin-block: 1rem;
+}
+
+.referral-checks label {
+  display: flex;
+  grid-template-columns: none;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-weight: 600;
+}
+
+.referral-checks input {
+  margin-top: 0.2rem;
+  accent-color: var(--color-primary-dark);
+}
+
+.referral-sheet__notice {
+  margin-block: 1.25rem !important;
+  color: var(--color-fine);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+@media (width >= 40rem) {
+  .referral-fields--two,
+  .referral-checks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .referral-fields--three {
+    grid-template-columns: 1.4fr 0.8fr 1fr;
+  }
+}
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.45in;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .referral-sheet,
+  .referral-sheet * {
+    visibility: visible;
+  }
+
+  .referral-sheet {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: white;
+    padding: 0;
+    font-size: 10pt;
+  }
+
+  .referral-sheet fieldset {
+    break-inside: avoid;
+    margin-top: 0.18in;
+    padding: 0.12in;
+  }
+
+  .referral-sheet input[type="text"],
+  .referral-sheet input[type="tel"],
+  .referral-sheet textarea {
+    border-color: #777;
+    background: white;
+    padding: 0.08in;
+  }
+
+  .referral-sheet textarea {
+    min-height: 0.55in;
+  }
+
+  .print-hide {
+    display: none !important;
+  }
+}
+
 .nav-trigger span {
   display: block;
   width: 1.25rem;

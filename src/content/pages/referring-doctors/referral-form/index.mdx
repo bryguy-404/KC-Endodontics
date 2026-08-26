@@ -3,7 +3,7 @@ slug: referring-doctors/referral-form
 title: Referral Form
 description: Access KC Endodontics referral information and the current printable form for dental offices referring patients to Dr. J. Eric Moore.
 eyebrow: For dental offices
-summary: Use the current printable referral form, then contact the KC Endodontics team to confirm the appropriate secure delivery method for patient information and images.
+summary: Complete the printable referral worksheet locally, then contact the KC Endodontics team to confirm the appropriate secure delivery method for patient information and images.
 template: article
 urgent: false
 sourceUrl: https://www.kcendodontics.com/referring-doctors/referral-form/
@@ -19,11 +19,77 @@ related:
     description: Find the practice phone, fax, address, hours, and directions.
 ---
 
-## Download the printable form
+## Printable referral worksheet
 
-[Open the current KC Endodontics referral form (PDF)](https://www.kcendodontics.com/files/2020/02/PV-referral-form.pdf)
+The worksheet below can be completed in the browser and printed. It is not submitted or stored by this website. Call KC Endodontics before sending the completed document or any clinical records so the office can confirm the current secure delivery method.
 
-The current form is a two-page printable document. Complete the relevant patient, referring-office, tooth, diagnostic, and treatment-request information before sending it with applicable images or records.
+[Download the fillable referral PDF](/files/2020/02/PV-referral-form.pdf)
+
+<form className="referral-sheet" autoComplete="off" onSubmit="return false;">
+  <div className="referral-sheet__heading">
+    <div>
+      <strong>KC Endodontics</strong>
+      <span>J. Eric Moore, DDS · Endodontic specialist</span>
+    </div>
+    <div>
+      <span>Phone 913-642-3636</span>
+      <span>Fax 913-642-5066</span>
+    </div>
+  </div>
+
+  <fieldset>
+    <legend>Patient information</legend>
+    <div className="referral-fields referral-fields--three">
+      <label>Patient name<input type="text" name="patient-name" /></label>
+      <label>Date of birth<input type="text" name="date-of-birth" inputMode="numeric" /></label>
+      <label>Phone<input type="tel" name="patient-phone" /></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Referring office</legend>
+    <div className="referral-fields referral-fields--two">
+      <label>Referring doctor<input type="text" name="referring-doctor" /></label>
+      <label>Practice name<input type="text" name="practice-name" /></label>
+      <label>Phone<input type="tel" name="office-phone" /></label>
+      <label>Fax<input type="tel" name="office-fax" /></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Referral details</legend>
+    <div className="referral-fields referral-fields--two">
+      <label>Tooth or area<input type="text" name="tooth-area" /></label>
+      <label>Preferred timing<input type="text" name="preferred-timing" /></label>
+    </div>
+    <div className="referral-checks" aria-label="Requested service">
+      <label><input type="checkbox" name="request" value="consult" /> Consultation / diagnosis</label>
+      <label><input type="checkbox" name="request" value="treat" /> Evaluate and treat as indicated</label>
+      <label><input type="checkbox" name="request" value="retreatment" /> Retreatment evaluation</label>
+      <label><input type="checkbox" name="request" value="surgery" /> Surgical evaluation</label>
+      <label><input type="checkbox" name="request" value="trauma" /> Dental trauma</label>
+      <label><input type="checkbox" name="request" value="other" /> Other</label>
+    </div>
+    <label>Clinical findings, symptoms, relevant history, and restorative considerations<textarea name="clinical-notes" rows="5"></textarea></label>
+    <label>Images or records being provided<textarea name="attachments" rows="2"></textarea></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Follow-up</legend>
+    <div className="referral-checks">
+      <label><input type="checkbox" name="follow-up" value="report" /> Send diagnostic / treatment report</label>
+      <label><input type="checkbox" name="follow-up" value="call" /> Please call to discuss this case</label>
+      <label><input type="checkbox" name="follow-up" value="restore" /> Return patient for final restoration</label>
+    </div>
+    <div className="referral-fields referral-fields--two">
+      <label>Referring signature<input type="text" name="signature" /></label>
+      <label>Date<input type="text" name="referral-date" inputMode="numeric" /></label>
+    </div>
+  </fieldset>
+
+  <p className="referral-sheet__notice">This worksheet does not submit information online. Confirm a secure delivery method with KC Endodontics before sending patient records.</p>
+  <button type="button" className="button-secondary print-hide" onClick="window.print()">Print this referral worksheet</button>
+</form>
 
 ## Protect patient information
 

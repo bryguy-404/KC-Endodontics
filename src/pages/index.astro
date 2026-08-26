@@ -12,11 +12,59 @@ import QuoteBand from "../components/QuoteBand.astro";
 import Doctor from "../components/Doctor.astro";
 import DualCta from "../components/DualCta.astro";
 import Footer from "../components/Footer.astro";
+import { site } from "../lib/site";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: site.name,
+      url: site.url,
+      description: site.description,
+    },
+    {
+      "@type": "Dentist",
+      name: site.name,
+      url: site.url,
+      telephone: site.phone.display,
+      faxNumber: site.fax,
+      image: new URL("/logo.jpg", site.url).href,
+      description: site.description,
+      medicalSpecialty: "Endodontics",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: site.address.street,
+        addressLocality: site.address.city,
+        addressRegion: site.address.state,
+        postalCode: site.address.zip,
+        addressCountry: "US",
+      },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: "Monday",
+          opens: "08:00",
+          closes: "16:00",
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Wednesday", "Thursday"],
+          opens: "08:00",
+          closes: "16:00",
+        },
+      ],
+      hasMap: site.mapsUrl,
+      areaServed: "Kansas City metropolitan area",
+    },
+  ],
+};
 ---
 
 <Layout
   title="KC Endodontics | Endodontist in Prairie Village, KS"
   description="KC Endodontics provides professional, compassionate endodontic specialty care in Prairie Village, Kansas, including root canal treatment, retreatment, and endodontic surgery."
+  structuredData={structuredData}
 >
   <UtilityBar />
   <Header />

@@ -30,6 +30,7 @@ const isInstructionPage = slug === "instructions" || slug.startsWith("instructio
 const isMeetPage = slug === "meet-us" || slug.startsWith("meet-us/");
 const isReferringPage = slug === "referring-doctors" || slug.startsWith("referring-doctors/");
 const isContactPage = slug === "contact-us" || slug.startsWith("contact-us/");
+const isUtilityPage = slug === "disclaimer" || slug === "sitemap";
 
 const section = isPatientPage
   ? { label: "Patient information", href: "/patient-information/", root: "patient-information" }
@@ -151,6 +152,8 @@ const structuredData = {
                         ? "Your specialist"
                         : isContactPage
                           ? "Prairie Village office"
+                          : isUtilityPage
+                            ? "Website information"
                           : "Specialist care"}
               </p>
               <h2 class="font-heading mt-3 text-2xl font-semibold leading-tight">
@@ -164,6 +167,8 @@ const structuredData = {
                         ? "Experience guided by compassion and ethics."
                         : isContactPage
                           ? "A helpful answer is one call away."
+                          : isUtilityPage
+                            ? "Clear information should be easy to find."
                           : "Focused on saving natural teeth."}
               </h2>
               <p class="mt-3 text-sm leading-6 text-copy">
@@ -173,6 +178,8 @@ const structuredData = {
                     ? "Our team welcomes case conversations and coordinates findings, treatment, and restorative follow-up with referring practices."
                     : isContactPage
                       ? "Call for scheduling, visit questions, or directions. The team will help you determine the appropriate next step."
+                      : isUtilityPage
+                        ? "Use the sitemap to browse the site, or call the office if you need the information in another format."
                       : "Dr. J. Eric Moore provides endodontic care in Prairie Village with clear explanations and close coordination with your restorative dentist."}
               </p>
             </div>
@@ -223,6 +230,8 @@ const structuredData = {
                 ? "Would you like to discuss a case?"
                 : isContactPage
                   ? "Ready to speak with our team?"
+                  : isUtilityPage
+                    ? "Need help finding something?"
                   : "Questions about your tooth or treatment?"}
           </h2>
         </div>

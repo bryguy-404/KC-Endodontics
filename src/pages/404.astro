@@ -1,0 +1,35 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import UtilityBar from "../components/UtilityBar.astro";
+import Layout from "../layouts/Layout.astro";
+import { site } from "../lib/site";
+---
+
+<Layout
+  title={`Page not found | ${site.name}`}
+  description="The page you requested could not be found. Return to KC Endodontics or call the Prairie Village office for assistance."
+  noindex
+>
+  <UtilityBar />
+  <Header />
+  <main id="main-a" class="bg-surface">
+    <section class="shell flex min-h-[62vh] items-center py-20 sm:py-28">
+      <div class="max-w-3xl">
+        <p class="eyebrow text-secondary">404 · Page not found</p>
+        <h1 class="font-heading mt-4 text-5xl font-semibold leading-tight tracking-[-.035em] sm:text-7xl">
+          Let’s get you back to a clear next step.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-copy">
+          The address may have changed or the page may no longer be available. Visit the homepage, explore patient information, or call our team for help.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="/" class="button-primary">Return home</a>
+          <a href="/patient-information/" class="button-secondary">Patient information</a>
+          <a href={site.phone.href} class="button-secondary">Call {site.phone.display}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
