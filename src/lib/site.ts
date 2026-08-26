@@ -76,6 +76,36 @@ export const navItems = [
       { label: "After-treatment FAQ", href: "/instructions/after-treatment/" },
     ],
   },
-  { label: "Dr. Moore", href: "/#doctor-a" },
-  { label: "Referring dentists", href: "/#referrals-a" },
+  {
+    label: "Meet us",
+    href: "/meet-us/",
+    columns: 1,
+    children: [
+      { label: "Meet us", href: "/meet-us/" },
+      { label: "Meet Dr. Moore", href: "/meet-us/meet-dr-moore/" },
+    ],
+  },
+  {
+    label: "Referring doctors",
+    href: "/referring-doctors/",
+    columns: 1,
+    children: [
+      { label: "Referring doctors", href: "/referring-doctors/" },
+      { label: "Referral form", href: "/referring-doctors/referral-form/" },
+      {
+        label: "Colleagues for Excellence",
+        href: "/referring-doctors/colleagues-for-excellence-newsletter/",
+      },
+      {
+        label: "Endodontic case assessment",
+        href: "/referring-doctors/endodontic-case-assessment/",
+      },
+      {
+        label: "Treatment planning options",
+        href: "/referring-doctors/treatment-planning-options/",
+      },
+      { label: "Links of interest", href: "/referring-doctors/links-of-interest/" },
+    ],
+  },
+  { label: "Contact us", href: "/contact-us/" },
 ] as const;
