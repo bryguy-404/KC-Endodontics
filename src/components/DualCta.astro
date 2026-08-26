@@ -2,31 +2,32 @@
 import { site } from "../lib/site";
 ---
 
-<section id="patients-a" class="py-20">
+<section id="patients-a" class="py-16 sm:py-20">
   <div class="shell grid gap-6 lg:grid-cols-2">
-    <article class="rounded-md border border-border p-8">
-      <p class="text-xs font-bold uppercase tracking-[.18em] text-secondary">
+    <article class="relative overflow-hidden rounded-md bg-primary-dark p-8 text-white shadow-[0_20px_45px_rgb(63_98_126/.16)] sm:p-10">
+      <div aria-hidden="true" class="absolute -right-12 -top-16 h-48 w-48 rounded-full border border-white/10"></div>
+      <p class="eyebrow relative text-white/65">
         For new patients
       </p>
-      <h2 class="font-heading mt-3 text-3xl font-semibold">
+      <h2 class="font-heading relative mt-3 max-w-lg text-4xl font-semibold leading-tight">
         Begin with clear information.
       </h2>
-      <p class="mt-4 leading-7 text-copy">
+      <p class="relative mt-4 max-w-xl leading-7 text-white/80">
         Call KC Endodontics for guidance about your appointment and the
         appropriate patient resources.
       </p>
       <a
         href={site.phone.href}
-        class="mt-6 inline-flex rounded-full bg-primary px-6 py-3 font-bold text-white hover:bg-foreground"
-        >Call the office</a
+        class="button-inverse relative mt-7"
+        >Call the office <span aria-hidden="true">→</span></a
       >
     </article>
 
-    <article id="referrals-a" class="rounded-md border border-border p-8">
-      <p class="text-xs font-bold uppercase tracking-[.18em] text-secondary">
+    <article id="referrals-a" class="rounded-md border border-border bg-surface p-8 sm:p-10">
+      <p class="eyebrow text-secondary">
         For referring dentists
       </p>
-      <h2 class="font-heading mt-3 text-3xl font-semibold">
+      <h2 class="font-heading mt-3 max-w-lg text-4xl font-semibold leading-tight">
         A direct specialist connection.
       </h2>
       <p class="mt-4 leading-7 text-copy">
@@ -35,8 +36,8 @@ import { site } from "../lib/site";
       </p>
       <a
         href={site.phone.href}
-        class="mt-6 inline-flex font-bold text-accent hover:underline"
-        >Call about a referral →</a
+        class="button-secondary mt-7 bg-background"
+        >Call about a referral <span aria-hidden="true">→</span></a
       >
     </article>
   </div>

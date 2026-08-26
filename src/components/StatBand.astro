@@ -1,25 +1,28 @@
 ---
 const facts = [
-  { term: "Practice focus", detail: "Endodontic specialty care" },
-  { term: "Clinical lead", detail: "Dr. Moore" },
-  { term: "Location", detail: "Prairie Village, Kansas" },
-  { term: "Resources", detail: "Patients and referring dentists" },
+  { marker: "01", term: "Specialty", detail: "Focused endodontic care" },
+  { marker: "02", term: "Led by", detail: "J. Eric Moore, DDS" },
+  { marker: "03", term: "Located in", detail: "Prairie Village, Kansas" },
+  { marker: "04", term: "Built for", detail: "Patients and dentists" },
 ];
 ---
 
-<section aria-labelledby="facts-a" class="border-y border-border bg-muted py-8">
+<section aria-labelledby="facts-a" class="border-y border-primary/15 bg-primary-soft/55 py-8 sm:py-10">
   <div class="shell">
     <h2
       id="facts-a"
-      class="mb-5 text-xs font-bold uppercase tracking-[.18em] text-secondary"
+      class="sr-only"
     >
       Practice at a glance
     </h2>
-    <dl class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <dl class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
       {facts.map((fact) => (
-        <div>
-          <dt class="text-xs uppercase tracking-wider text-label">{fact.term}</dt>
-          <dd class="mt-1 font-bold">{fact.detail}</dd>
+        <div class="flex gap-4 lg:border-l lg:border-primary/20 lg:px-6 lg:first:border-l-0 lg:first:pl-0">
+          <span aria-hidden="true" class="font-heading text-xl font-semibold text-secondary">{fact.marker}</span>
+          <div>
+            <dt class="text-[0.68rem] font-bold uppercase tracking-[.15em] text-label">{fact.term}</dt>
+            <dd class="mt-1 font-semibold text-foreground">{fact.detail}</dd>
+          </div>
         </div>
       ))}
     </dl>

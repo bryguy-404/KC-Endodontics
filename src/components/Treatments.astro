@@ -4,18 +4,21 @@ import { site } from "../lib/site";
 const treatments = [
   {
     ordinal: "01",
+    short: "Save the natural tooth",
     title: "Root canal treatment",
     body: "Specialist care for a tooth that needs treatment within the root canal system.",
     linkLabel: "Ask the office about treatment →",
   },
   {
     ordinal: "02",
+    short: "Renew previous care",
     title: "Endodontic retreatment",
     body: "A focused next step when a previously treated tooth needs renewed endodontic attention.",
     linkLabel: "Discuss retreatment →",
   },
   {
     ordinal: "03",
+    short: "Resolve complex concerns",
     title: "Root canal surgery",
     body: "Specialist guidance when root canal surgery, also called apicoectomy, is being considered.",
     linkLabel: "Ask about surgical care →",
@@ -23,30 +26,33 @@ const treatments = [
 ];
 ---
 
-<section id="treatments-a" class="bg-muted py-20 sm:py-28">
+<section id="treatments-a" class="bg-surface py-20 sm:py-24">
   <div class="shell">
-    <div class="mx-auto max-w-3xl text-center">
-      <p class="text-xs font-bold uppercase tracking-[.2em] text-secondary">
-        Endodontic care
-      </p>
-      <h2 class="font-heading mt-4 text-4xl font-semibold sm:text-5xl">
-        A focused path for your next step.
-      </h2>
-      <p class="mt-5 leading-7 text-copy">
-        Explore the practice’s core services, then call the office for guidance
-        specific to your visit.
+    <div class="grid gap-7 lg:grid-cols-[.72fr_1.28fr] lg:items-end">
+      <div>
+        <p class="eyebrow text-secondary">Endodontic care</p>
+        <h2 class="font-heading mt-4 max-w-xl text-4xl font-semibold leading-tight tracking-[-.02em] sm:text-5xl">
+          A focused path for your next step.
+        </h2>
+      </div>
+      <p class="max-w-xl text-lg leading-8 text-copy lg:justify-self-end">
+        Every visit begins with a careful evaluation and a straightforward
+        explanation of what comes next.
       </p>
     </div>
 
-    <div class="mt-12 grid gap-5 lg:grid-cols-3">
+    <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {treatments.map((treatment) => (
-        <article class="rounded-md border border-border bg-background p-7 shadow-sm">
-          <span class="text-sm font-bold text-secondary">{treatment.ordinal}</span>
-          <h3 class="font-heading mt-7 text-3xl font-semibold">{treatment.title}</h3>
+        <article class="service-card flex min-h-[21rem] flex-col rounded-md border border-border/90 bg-background p-7 shadow-[0_12px_30px_rgb(69_66_66/.05)] sm:p-8">
+          <div class="flex items-center justify-between gap-4">
+            <span class="grid h-11 w-11 place-items-center rounded-full bg-secondary-soft text-sm font-bold text-secondary">{treatment.ordinal}</span>
+            <span class="text-right text-xs font-bold uppercase tracking-[.12em] text-label">{treatment.short}</span>
+          </div>
+          <h3 class="font-heading mt-8 text-3xl font-semibold leading-tight">{treatment.title}</h3>
           <p class="mt-4 leading-7 text-copy">{treatment.body}</p>
           <a
             href={site.phone.href}
-            class="mt-7 inline-flex font-bold text-accent hover:underline"
+            class="mt-auto inline-flex items-center gap-2 pt-7 font-bold text-accent hover:underline"
           >
             {treatment.linkLabel}
           </a>

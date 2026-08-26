@@ -1,49 +1,66 @@
 ---
 import { site } from "../lib/site";
-import PhotoPlaceholder from "./PhotoPlaceholder.astro";
 ---
 
-<section class="bg-background py-16 sm:py-24">
-  <div class="shell grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
-    <div>
-      <p class="mb-5 text-xs font-bold uppercase tracking-[.2em] text-secondary">
+<section class="relative overflow-hidden bg-background pb-16 pt-12 sm:py-20 lg:py-24">
+  <div aria-hidden="true" class="absolute -right-40 -top-56 h-[34rem] w-[34rem] rounded-full bg-primary-soft/70 blur-3xl"></div>
+  <div class="shell relative grid items-center gap-11 lg:grid-cols-[1.03fr_.97fr] lg:gap-16">
+    <div class="max-w-2xl">
+      <p class="eyebrow mb-5 flex items-center gap-3 text-secondary">
+        <span aria-hidden="true" class="h-2 w-2 rounded-full bg-secondary"></span>
         Prairie Village endodontic specialist
       </p>
       <h1
-        class="font-heading max-w-3xl text-5xl font-semibold leading-[1.05] text-foreground sm:text-6xl lg:text-7xl"
+        class="font-heading max-w-3xl text-[clamp(3rem,6vw,5.25rem)] font-semibold leading-[1.02] tracking-[-.025em] text-foreground"
       >
         Specialist care that starts with reassurance.
       </h1>
-      <p class="mt-7 max-w-xl text-lg leading-8 text-lede">
+      <p class="mt-7 max-w-xl text-lg leading-8 text-lede sm:text-xl">
         When you need endodontic care, clear information and a calm experience
         matter. KC Endodontics provides compassionate, personalized care under
         Dr. Moore.
       </p>
-      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <a
           href={site.phone.href}
-          class="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-7 py-3 font-bold text-white hover:bg-foreground"
-          >Call {site.phone.display}</a
+          class="button-primary"
+          >Call {site.phone.display}<span aria-hidden="true">→</span></a
         >
         <a
           href="#patients-a"
-          class="inline-flex min-h-12 items-center justify-center rounded-full border border-primary px-7 py-3 font-bold text-primary hover:bg-muted"
+          class="button-secondary"
           >New Patient Information</a
         >
       </div>
-      <p class="mt-7 text-sm leading-6 text-fine">
-        Root canal treatment · Endodontic retreatment · Root canal surgery
-      </p>
+      <ul class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-fine" aria-label="Core treatments">
+        <li class="flex items-center gap-2"><span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-primary"></span>Root canals</li>
+        <li class="flex items-center gap-2"><span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-primary"></span>Retreatment</li>
+        <li class="flex items-center gap-2"><span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-primary"></span>Endodontic surgery</li>
+      </ul>
     </div>
 
-    <PhotoPlaceholder
-      label="a naturally lit, reassuring conversation between a clinician and patient"
-      class="min-h-[430px] rounded-lg sm:min-h-[560px]"
-      chipClass="rounded-xl max-w-[260px]"
-    >
-      Image placeholder<br /><span class="font-normal normal-case tracking-normal"
-        >Warm clinician–patient interaction</span
-      >
-    </PhotoPlaceholder>
+    <figure class="relative min-h-[420px] overflow-hidden rounded-lg bg-primary-soft shadow-[0_30px_70px_rgb(63_98_126/.2)] sm:min-h-[560px]">
+      <img
+        src="/clinical-consultation.jpg"
+        alt="A clinician having a reassuring conversation with a patient in a bright dental office"
+        width="1800"
+        height="1350"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        class="absolute inset-0 h-full w-full object-cover object-center"
+      />
+      <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent"></div>
+      <figcaption class="absolute bottom-5 left-5 right-5 flex max-w-sm items-center gap-3 rounded-2xl bg-background/95 p-4 shadow-lg backdrop-blur sm:bottom-7 sm:left-7">
+        <span aria-hidden="true" class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary-soft text-xl text-primary-dark">✓</span>
+        <span>
+          <strong class="block text-sm">Care that meets you calmly</strong>
+          <span class="mt-0.5 block text-xs leading-5 text-copy">Clear guidance from your first conversation.</span>
+        </span>
+      </figcaption>
+      <div class="absolute right-5 top-5 rounded-full border border-white/50 bg-background/85 px-4 py-2 text-xs font-bold text-primary-dark shadow-sm backdrop-blur sm:right-7 sm:top-7">
+        Specialty care · Prairie Village
+      </div>
+    </figure>
   </div>
 </section>

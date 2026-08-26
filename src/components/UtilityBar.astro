@@ -2,18 +2,23 @@
 import { site } from "../lib/site";
 ---
 
-<div class="bg-primary text-white">
+<div class="bg-primary-dark text-white">
   <div
-    class="shell flex flex-col gap-1 py-2 text-xs sm:flex-row sm:items-center sm:justify-between"
+    class="shell flex min-h-9 items-center justify-between gap-4 py-2 text-xs"
   >
-    <a href={site.phone.href} class="font-bold tracking-wide"
-      >Call {site.phone.display}</a
-    >
+    <a href={site.phone.href} class="font-bold tracking-wide">
+      <span class="sm:hidden">Call the office</span>
+      <span class="hidden sm:inline">Call {site.phone.display}</span>
+    </a>
     <a
       href={site.mapsUrl}
       target="_blank"
-      rel="noopener"
-      class="hover:underline">{site.address.full}</a
+      rel="noopener noreferrer"
+      class="text-right text-white/85 hover:text-white hover:underline"
+    >
+      <span class="sm:hidden">Prairie Village · Directions ↗</span>
+      <span class="hidden sm:inline">{site.address.full}</span>
+    </a
     >
   </div>
 </div>

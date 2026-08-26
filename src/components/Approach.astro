@@ -1,6 +1,4 @@
 ---
-import PhotoPlaceholder from "./PhotoPlaceholder.astro";
-
 const values = [
   { title: "Compassionate care", body: "A calm, respectful welcome." },
   { title: "Personal guidance", body: "Information centered on your visit." },
@@ -9,31 +7,41 @@ const values = [
 ];
 ---
 
-<section id="approach-a" class="py-20 sm:py-28">
-  <div class="shell grid items-center gap-12 lg:grid-cols-2">
-    <PhotoPlaceholder
-      label="calm office detail with soft natural light"
-      class="min-h-[390px] rounded-md"
-    >
-      Image placeholder · Calm office detail
-    </PhotoPlaceholder>
+<section id="approach-a" class="py-20 sm:py-24">
+  <div class="shell grid items-center gap-12 lg:grid-cols-[.94fr_1.06fr] lg:gap-20">
+    <figure class="relative min-h-[380px] sm:min-h-[520px]">
+      <div aria-hidden="true" class="absolute -bottom-4 -left-4 h-[88%] w-[88%] rounded-lg bg-primary-soft"></div>
+      <img
+        src="/office-detail.jpg"
+        alt="A bright, modern dental treatment room prepared for a patient"
+        width="1600"
+        height="1067"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 h-full w-full rounded-lg object-cover shadow-[0_24px_60px_rgb(69_66_66/.14)]"
+      />
+      <figcaption class="absolute bottom-5 left-5 rounded-full bg-background/95 px-4 py-2 text-xs font-bold text-primary-dark shadow-md backdrop-blur sm:bottom-7 sm:left-7">
+        A calm, modern care environment
+      </figcaption>
+    </figure>
 
     <div>
-      <p class="text-xs font-bold uppercase tracking-[.2em] text-secondary">
+      <p class="eyebrow text-secondary">
         Why choose KC Endodontics
       </p>
-      <h2 class="font-heading mt-4 text-4xl font-semibold sm:text-5xl">
+      <h2 class="font-heading mt-4 text-4xl font-semibold leading-tight tracking-[-.02em] sm:text-5xl">
         Professional by design. Personal by nature.
       </h2>
       <p class="mt-6 text-lg leading-8 text-copy">
         The practice’s approach brings patient comfort, thoughtful communication,
         professionalism, and clinical excellence into one specialist experience.
       </p>
-      <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      <div class="mt-9 grid gap-3 sm:grid-cols-2">
         {values.map((value) => (
-          <div class="border-l-2 border-primary pl-4">
-            <strong>{value.title}</strong>
-            <p class="mt-1 text-sm text-copy">{value.body}</p>
+          <div class="rounded-sm border border-border/80 bg-surface p-4">
+            <span aria-hidden="true" class="mb-3 block h-1.5 w-8 rounded-full bg-primary"></span>
+            <strong class="text-sm">{value.title}</strong>
+            <p class="mt-1 text-sm leading-6 text-copy">{value.body}</p>
           </div>
         ))}
       </div>

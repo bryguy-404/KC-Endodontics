@@ -1,11 +1,15 @@
 export const theme = {
   colors: {
     primary: "#577896",
+    primaryDark: "#3F627E",
+    primarySoft: "#E8F0F5",
     secondary: "#790000",
+    secondarySoft: "#F4EAEA",
     accent: "#337AB7",
     background: "#FFFFFF",
     foreground: "#454242",
     muted: "#F2F0F0",
+    surface: "#F8F7F5",
     // Supporting tokens extracted from the mockup
     border: "#D2D3D4",
     lede: "#5d5959",

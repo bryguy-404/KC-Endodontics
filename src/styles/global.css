@@ -3,11 +3,15 @@
 /* Theme tokens — mirrors src/lib/theme.config.ts. Keep the two in sync. */
 @theme {
   --color-primary: #577896;
+  --color-primary-dark: #3f627e;
+  --color-primary-soft: #e8f0f5;
   --color-secondary: #790000;
+  --color-secondary-soft: #f4eaea;
   --color-accent: #337ab7;
   --color-background: #ffffff;
   --color-foreground: #454242;
   --color-muted: #f2f0f0;
+  --color-surface: #f8f7f5;
   --color-border: #d2d3d4;
   --color-lede: #5d5959;
   --color-copy: #625e5e;
@@ -24,10 +28,23 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
 }
 
 body {
   font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-primary-soft);
+  color: var(--color-foreground);
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 :focus-visible {
@@ -38,6 +55,13 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -57,8 +81,7 @@ body {
   }
 }
 
-/* Photo placeholder: layered gradient + abstract tooth/arch silhouette.
-   Stands in for real photography; swap for <img> once assets exist. */
+/* Retained for any future image-loading state or asset placeholder. */
 @utility photo-a {
   position: relative;
   overflow: hidden;
@@ -73,5 +96,108 @@ body {
     border: 1px solid rgb(255 255 255 / 0.5);
     border-radius: 999px 999px 2rem 2rem;
     transform: rotate(8deg);
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.button-primary,
+.button-secondary,
+.button-inverse {
+  display: inline-flex;
+  min-height: 3.125rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  padding: 0.75rem 1.65rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.button-primary {
+  background: var(--color-primary-dark);
+  color: white;
+  box-shadow: 0 10px 24px rgb(63 98 126 / 0.2);
+}
+
+.button-secondary {
+  border: 1px solid rgb(63 98 126 / 0.45);
+  background: rgb(255 255 255 / 0.72);
+  color: var(--color-primary-dark);
+}
+
+.button-inverse {
+  background: white;
+  color: var(--color-foreground);
+}
+
+@media (hover: hover) {
+  .button-primary:hover,
+  .button-inverse:hover {
+    transform: translateY(-2px);
+  }
+
+  .button-primary:hover {
+    background: var(--color-foreground);
+    box-shadow: 0 14px 30px rgb(69 66 66 / 0.18);
+  }
+
+  .button-secondary:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary-dark);
+    background: var(--color-primary-soft);
+  }
+}
+
+.nav-trigger span {
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.nav-trigger span + span {
+  margin-top: 0.25rem;
+}
+
+.nav-trigger.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-trigger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-trigger.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.service-card {
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+@media (hover: hover) {
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgb(87 120 150 / 0.5);
+    box-shadow: 0 22px 50px rgb(69 66 66 / 0.1);
   }
 }
