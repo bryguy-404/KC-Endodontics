@@ -21,6 +21,7 @@ const pages = defineCollection({
     summary: z.string(),
     template: z.enum(["hub", "treatment", "article", "landing"]),
     urgent: z.boolean().default(false),
+    urgentText: z.string().optional(),
     sourceUrl: z.url(),
     related: z.array(relatedLink).default([]),
   }),

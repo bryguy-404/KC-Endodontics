@@ -27,9 +27,55 @@ export const site = {
   ],
 } as const;
 
-export const navLinks = [
-  { label: "Treatments", href: "/procedures/" },
-  { label: "What to expect", href: "/#expect-a" },
-  { label: "Why KC", href: "/#approach-a" },
+export const navItems = [
+  {
+    label: "Treatments",
+    href: "/procedures/",
+    columns: 2,
+    children: [
+      { label: "All treatments", href: "/procedures/" },
+      { label: "Root canal treatment", href: "/procedures/root-canal/" },
+      { label: "Root canal safety", href: "/procedures/root-canal/root-canal-safety/" },
+      { label: "Myths about root canals", href: "/procedures/root-canal/myths-about-root-canals/" },
+      { label: "Root resorption", href: "/procedures/root-canal/root-resorption/" },
+      { label: "Endodontic retreatment", href: "/procedures/endodontic-retreatment/" },
+      { label: "Apicoectomy", href: "/procedures/apicoectomy/" },
+      { label: "Cracked teeth", href: "/procedures/cracked-teeth/" },
+      { label: "Traumatic injuries", href: "/procedures/traumatic-injuries/" },
+    ],
+  },
+  {
+    label: "Patient information",
+    href: "/patient-information/",
+    columns: 2,
+    children: [
+      { label: "Patient overview", href: "/patient-information/" },
+      { label: "Why choose an endodontist", href: "/patient-information/why-choose-an-endodontist/" },
+      { label: "Why choose our practice", href: "/patient-information/why-choose-our-practice/" },
+      { label: "First visit", href: "/patient-information/first-visit/" },
+      { label: "Scheduling", href: "/patient-information/scheduling/" },
+      { label: "Financial policy", href: "/patient-information/financial-policy/" },
+      { label: "Insurance information", href: "/patient-information/insurance-information/" },
+      { label: "CareCredit", href: "/patient-information/care-credit/" },
+      { label: "About your tooth", href: "/patient-information/about-your-tooth/" },
+      { label: "Tooth pain", href: "/patient-information/tooth-pain/" },
+      { label: "Tooth-saving tips", href: "/patient-information/tooth-saving-tips/" },
+      { label: "Advanced technology", href: "/patient-information/advanced-technology/" },
+      { label: "Endodontic FAQ", href: "/patient-information/endodontic-faq/" },
+      { label: "Nitrous oxide", href: "/patient-information/nitrous-oxide/" },
+    ],
+  },
+  {
+    label: "Instructions",
+    href: "/instructions/",
+    columns: 1,
+    children: [
+      { label: "Instructions overview", href: "/instructions/" },
+      { label: "Before treatment", href: "/instructions/before-endodontic-treatment/" },
+      { label: "Home care instructions", href: "/instructions/general-instructions/" },
+      { label: "After-treatment FAQ", href: "/instructions/after-treatment/" },
+    ],
+  },
   { label: "Dr. Moore", href: "/#doctor-a" },
+  { label: "Referring dentists", href: "/#referrals-a" },
 ] as const;

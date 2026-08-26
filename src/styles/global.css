@@ -271,6 +271,21 @@ button {
   transform: translateY(-6px) rotate(-45deg);
 }
 
+.nav-group:hover .nav-dropdown,
+.nav-group:focus-within .nav-dropdown {
+  visibility: visible;
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.mobile-nav-group[open] .mobile-nav-plus {
+  transform: rotate(45deg);
+}
+
+.mobile-nav-plus {
+  transition: transform 180ms ease;
+}
+
 .service-card {
   transition:
     transform 220ms ease,

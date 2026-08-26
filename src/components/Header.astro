@@ -1,5 +1,5 @@
 ---
-import { site, navLinks } from "../lib/site";
+import { site, navItems } from "../lib/site";
 ---
 
 <header class="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-xl">
@@ -20,16 +20,34 @@ import { site, navLinks } from "../lib/site";
       </span>
     </a>
 
-    <nav
-      aria-label="Primary navigation"
-      class="hidden items-center gap-6 text-[0.82rem] font-semibold xl:flex"
-    >
-      {navLinks.map((link) => (
-        <a href={link.href} class="transition-colors hover:text-accent">{link.label}</a>
+    <nav aria-label="Primary navigation" class="hidden items-center gap-4 text-[0.78rem] font-semibold xl:flex 2xl:gap-6">
+      {navItems.map((item) => (
+        "children" in item ? (
+          <div class="nav-group relative py-5">
+            <a href={item.href} class="flex items-center gap-1.5 transition-colors hover:text-accent">
+              {item.label}
+              <span aria-hidden="true" class="text-[.6rem] text-label">⌄</span>
+            </a>
+            <div class:list={[
+              "nav-dropdown invisible absolute left-1/2 top-[calc(100%-1px)] z-50 -translate-x-1/2 translate-y-2 rounded-md border border-border bg-background p-4 opacity-0 shadow-[0_22px_55px_rgb(69_66_66/.16)] transition",
+              item.columns === 2 ? "w-[42rem]" : "w-72",
+            ]}>
+              <div class:list={["grid gap-1", item.columns === 2 && "grid-cols-2"]}>
+                {item.children.map((child) => (
+                  <a href={child.href} class="rounded-lg px-3 py-2.5 leading-5 text-copy transition hover:bg-primary-soft hover:text-primary-dark focus-visible:bg-primary-soft">
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a href={item.href} class="transition-colors hover:text-accent">{item.label}</a>
+        )
       ))}
       <a
         href={site.phone.href}
-        class="button-primary min-h-11 px-5 py-2.5"
+        class="button-primary min-h-11 shrink-0 px-5 py-2.5"
         >Call the office</a
       >
     </nav>
@@ -54,8 +72,22 @@ import { site, navLinks } from "../lib/site";
     class="hidden border-t border-border bg-background px-5 py-5 shadow-[0_18px_40px_rgb(69_66_66/.12)] xl:hidden"
   >
     <div class="mx-auto flex max-w-7xl flex-col font-semibold">
-      {navLinks.map((link) => (
-        <a href={link.href} class="border-b border-border/70 py-3.5">{link.label}</a>
+      {navItems.map((item) => (
+        "children" in item ? (
+          <details class="mobile-nav-group border-b border-border/70">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-3.5">
+              <span>{item.label}</span>
+              <span aria-hidden="true" class="mobile-nav-plus text-xl font-normal text-primary-dark">+</span>
+            </summary>
+            <div class="grid gap-1 pb-4 pl-3 text-sm font-semibold text-copy sm:grid-cols-2">
+              {item.children.map((child) => (
+                <a href={child.href} class="rounded-lg px-3 py-2.5 hover:bg-primary-soft hover:text-primary-dark">{child.label}</a>
+              ))}
+            </div>
+          </details>
+        ) : (
+          <a href={item.href} class="border-b border-border/70 py-3.5">{item.label}</a>
+        )
       ))}
       <a
         href={site.phone.href}
