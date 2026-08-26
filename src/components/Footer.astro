@@ -1,0 +1,35 @@
+---
+import { site } from "../lib/site";
+---
+
+<footer id="contact-a" class="bg-foreground text-white">
+  <div class="shell grid gap-10 py-14 lg:grid-cols-[1fr_auto] lg:items-end">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-[.2em] text-white/65">
+        {site.name}
+      </p>
+      <h2 class="font-heading mt-3 text-4xl font-semibold">
+        Ready for a clear next step?
+      </h2>
+      <a
+        href={site.phone.href}
+        class="mt-6 inline-flex rounded-full bg-background px-6 py-3 font-bold text-foreground"
+        >Call {site.phone.display}</a
+      >
+    </div>
+
+    <address class="max-w-md not-italic leading-7 text-white/85">
+      {site.address.street}<br />{`${site.address.city}, ${site.address.state} ${site.address.zip}`}<br />
+      <a
+        href={site.mapsUrl}
+        target="_blank"
+        rel="noopener"
+        class="font-bold text-white underline">View directions</a
+      >
+    </address>
+  </div>
+
+  <div class="border-t border-white/15 py-5 text-center text-xs text-white/60">
+    {site.name} · Prairie Village, Kansas
+  </div>
+</footer>

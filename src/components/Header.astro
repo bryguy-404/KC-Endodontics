@@ -1,0 +1,92 @@
+---
+import { site, navLinks } from "../lib/site";
+---
+
+<header class="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
+  <div class="shell flex min-h-20 items-center justify-between gap-5">
+    <a href="#main-a" aria-label={`${site.name} home`}>
+      <img
+        src="/logo.jpg"
+        alt={site.name}
+        width="320"
+        height="222"
+        class="h-auto max-h-14 w-[170px] object-contain sm:w-[210px]"
+      />
+    </a>
+
+    <nav
+      aria-label="Primary navigation"
+      class="hidden items-center gap-7 text-sm font-semibold lg:flex"
+    >
+      {navLinks.map((link) => (
+        <a href={link.href} class="hover:text-accent">{link.label}</a>
+      ))}
+      <a
+        href={site.phone.href}
+        class="rounded-full bg-primary px-5 py-3 text-white hover:bg-foreground"
+        >Call the office</a
+      >
+    </nav>
+
+    <button
+      id="navButtonA"
+      type="button"
+      aria-controls="mobileNavA"
+      aria-expanded="false"
+      aria-label="Open navigation"
+      class="grid h-11 w-11 place-items-center rounded-full border border-border lg:hidden"
+    >
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"></path></svg
+      >
+    </button>
+  </div>
+
+  <nav
+    id="mobileNavA"
+    aria-label="Mobile navigation"
+    class="hidden border-t border-border bg-background px-5 py-5 lg:hidden"
+  >
+    <div class="flex flex-col gap-4 font-semibold">
+      {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      <a
+        href={site.phone.href}
+        class="rounded-full bg-primary px-5 py-3 text-center text-white"
+        >Call {site.phone.display}</a
+      >
+    </div>
+  </nav>
+</header>
+
+<script>
+  const button = document.getElementById("navButtonA");
+  const panel = document.getElementById("mobileNavA");
+
+  if (button && panel) {
+    const setOpen = (open: boolean) => {
+      panel.classList.toggle("hidden", !open);
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    };
+
+    button.addEventListener("click", () =>
+      setOpen(panel.classList.contains("hidden")),
+    );
+
+    panel
+      .querySelectorAll("a")
+      .forEach((link) => link.addEventListener("click", () => setOpen(false)));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !panel.classList.contains("hidden")) {
+        setOpen(false);
+        button.focus();
+      }
+    });
+  }
+</script>

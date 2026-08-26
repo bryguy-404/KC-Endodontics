@@ -1,0 +1,23 @@
+---
+interface Props {
+  /** Describes the photograph this placeholder stands in for. */
+  label: string;
+  /** Extra classes for size and corner radius. */
+  class?: string;
+  /** Rounding for the caption chip; the hero uses a slightly larger chip. */
+  chipClass?: string;
+}
+
+const { label, class: className = "", chipClass = "rounded-sm" } = Astro.props;
+---
+
+<figure role="img" aria-label={`Image placeholder: ${label}`} class:list={["photo-a", className]}>
+  <figcaption
+    class:list={[
+      "absolute bottom-5 left-5 z-10 bg-background/95 px-4 py-3 text-xs font-bold uppercase tracking-wider text-foreground shadow",
+      chipClass,
+    ]}
+  >
+    <slot />
+  </figcaption>
+</figure>

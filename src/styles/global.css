@@ -1,1 +1,77 @@
 @import "tailwindcss";
+
+/* Theme tokens — mirrors src/lib/theme.config.ts. Keep the two in sync. */
+@theme {
+  --color-primary: #577896;
+  --color-secondary: #790000;
+  --color-accent: #337ab7;
+  --color-background: #ffffff;
+  --color-foreground: #454242;
+  --color-muted: #f2f0f0;
+  --color-border: #d2d3d4;
+  --color-lede: #5d5959;
+  --color-copy: #625e5e;
+  --color-fine: #676363;
+  --color-label: #6b6767;
+
+  --font-heading: "Spectral", serif;
+  --font-body: "Open Sans", sans-serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Shared container: 1280px max, padding steps up at sm and lg. */
+@utility shell {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+
+  @media (width >= 64rem) {
+    padding-inline: 3rem;
+  }
+}
+
+/* Photo placeholder: layered gradient + abstract tooth/arch silhouette.
+   Stands in for real photography; swap for <img> once assets exist. */
+@utility photo-a {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 72% 24%, rgb(255 255 255 / 0.9) 0 8%, transparent 9%),
+    linear-gradient(145deg, #dce5eb 0%, #b6c7d2 52%, #879eaf 100%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 9% 9% 18% 28%;
+    border: 1px solid rgb(255 255 255 / 0.5);
+    border-radius: 999px 999px 2rem 2rem;
+    transform: rotate(8deg);
+  }
+}

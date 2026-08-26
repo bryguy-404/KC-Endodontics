@@ -1,0 +1,43 @@
+---
+import { site } from "../lib/site";
+---
+
+<section id="patients-a" class="py-20">
+  <div class="shell grid gap-6 lg:grid-cols-2">
+    <article class="rounded-md border border-border p-8">
+      <p class="text-xs font-bold uppercase tracking-[.18em] text-secondary">
+        For new patients
+      </p>
+      <h2 class="font-heading mt-3 text-3xl font-semibold">
+        Begin with clear information.
+      </h2>
+      <p class="mt-4 leading-7 text-copy">
+        Call KC Endodontics for guidance about your appointment and the
+        appropriate patient resources.
+      </p>
+      <a
+        href={site.phone.href}
+        class="mt-6 inline-flex rounded-full bg-primary px-6 py-3 font-bold text-white hover:bg-foreground"
+        >Call the office</a
+      >
+    </article>
+
+    <article id="referrals-a" class="rounded-md border border-border p-8">
+      <p class="text-xs font-bold uppercase tracking-[.18em] text-secondary">
+        For referring dentists
+      </p>
+      <h2 class="font-heading mt-3 text-3xl font-semibold">
+        A direct specialist connection.
+      </h2>
+      <p class="mt-4 leading-7 text-copy">
+        Resources are available for referring dental professionals. Contact the
+        practice for referral coordination and office information.
+      </p>
+      <a
+        href={site.phone.href}
+        class="mt-6 inline-flex font-bold text-accent hover:underline"
+        >Call about a referral →</a
+      >
+    </article>
+  </div>
+</section>

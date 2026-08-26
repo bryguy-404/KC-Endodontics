@@ -1,0 +1,27 @@
+---
+const facts = [
+  { term: "Practice focus", detail: "Endodontic specialty care" },
+  { term: "Clinical lead", detail: "Dr. Moore" },
+  { term: "Location", detail: "Prairie Village, Kansas" },
+  { term: "Resources", detail: "Patients and referring dentists" },
+];
+---
+
+<section aria-labelledby="facts-a" class="border-y border-border bg-muted py-8">
+  <div class="shell">
+    <h2
+      id="facts-a"
+      class="mb-5 text-xs font-bold uppercase tracking-[.18em] text-secondary"
+    >
+      Practice at a glance
+    </h2>
+    <dl class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {facts.map((fact) => (
+        <div>
+          <dt class="text-xs uppercase tracking-wider text-label">{fact.term}</dt>
+          <dd class="mt-1 font-bold">{fact.detail}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

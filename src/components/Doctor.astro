@@ -1,0 +1,31 @@
+---
+import { site } from "../lib/site";
+import PhotoPlaceholder from "./PhotoPlaceholder.astro";
+---
+
+<section id="doctor-a" class="bg-muted py-20 sm:py-28">
+  <div class="shell grid items-center gap-12 lg:grid-cols-[.85fr_1.15fr]">
+    <PhotoPlaceholder
+      label="composed professional portrait of Dr. Moore"
+      class="min-h-[480px] rounded-lg"
+    >
+      Portrait placeholder · Dr. Moore
+    </PhotoPlaceholder>
+
+    <div>
+      <p class="text-xs font-bold uppercase tracking-[.2em] text-secondary">
+        Meet the specialist
+      </p>
+      <h2 class="font-heading mt-4 text-5xl font-semibold">Dr. Moore</h2>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-copy">
+        Dr. Moore leads KC Endodontics with an approach grounded in personalized
+        care, patient comfort, professionalism, and clinical excellence.
+      </p>
+      <a
+        href={site.phone.href}
+        class="mt-8 inline-flex items-center font-bold text-accent hover:underline"
+        >Connect with the office →</a
+      >
+    </div>
+  </div>
+</section>

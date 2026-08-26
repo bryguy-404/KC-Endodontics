@@ -1,0 +1,19 @@
+---
+import { site } from "../lib/site";
+---
+
+<div class="bg-primary text-white">
+  <div
+    class="shell flex flex-col gap-1 py-2 text-xs sm:flex-row sm:items-center sm:justify-between"
+  >
+    <a href={site.phone.href} class="font-bold tracking-wide"
+      >Call {site.phone.display}</a
+    >
+    <a
+      href={site.mapsUrl}
+      target="_blank"
+      rel="noopener"
+      class="hover:underline">{site.address.full}</a
+    >
+  </div>
+</div>
