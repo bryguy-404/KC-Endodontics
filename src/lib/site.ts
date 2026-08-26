@@ -21,6 +21,7 @@ export const site = {
   },
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=3700+W.+83rd+Street%2C+Suite+106%2C+Prairie+Village%2C+KS+66208",
+  facebookUrl: "https://www.facebook.com/kcendodontics/",
   hours: [
     { days: "Monday", hours: "8am–4pm" },
     { days: "Wednesday–Thursday", hours: "8am–4pm" },
@@ -36,6 +37,7 @@ export const navItems = [
       { label: "All Treatments", href: "/procedures/" },
       { label: "Root Canal Treatment", href: "/procedures/root-canal/" },
       { label: "Root Canal Safety", href: "/procedures/root-canal/root-canal-safety/" },
+      { label: "Endodontic References", href: "/procedures/root-canal/endodontic-references/" },
       { label: "Myths About Root Canals", href: "/procedures/root-canal/myths-about-root-canals/" },
       { label: "Root Resorption", href: "/procedures/root-canal/root-resorption/" },
       { label: "Endodontic Retreatment", href: "/procedures/endodontic-retreatment/" },
