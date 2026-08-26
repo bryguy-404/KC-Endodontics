@@ -8,6 +8,9 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.kcendodontics.com',
+  trailingSlash: 'always',
+
   vite: {
     plugins: [tailwindcss(), sites()]
   },

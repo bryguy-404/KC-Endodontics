@@ -28,8 +28,8 @@ export const site = {
 } as const;
 
 export const navLinks = [
-  { label: "Treatments", href: "#treatments-a" },
-  { label: "What to expect", href: "#expect-a" },
-  { label: "Why KC", href: "#approach-a" },
-  { label: "Dr. Moore", href: "#doctor-a" },
+  { label: "Treatments", href: "/procedures/" },
+  { label: "What to expect", href: "/#expect-a" },
+  { label: "Why KC", href: "/#approach-a" },
+  { label: "Dr. Moore", href: "/#doctor-a" },
 ] as const;

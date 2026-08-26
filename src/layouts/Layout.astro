@@ -5,9 +5,14 @@ import { site } from "../lib/site";
 interface Props {
   title?: string;
   description?: string;
+  structuredData?: Record<string, unknown>;
 }
 
-const { title = site.title, description = site.description } = Astro.props;
+const {
+  title = site.title,
+  description = site.description,
+  structuredData,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const socialImage = new URL("/logo.jpg", site.url).href;
 ---
@@ -40,6 +45,10 @@ const socialImage = new URL("/logo.jpg", site.url).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
     <meta name="twitter:image:alt" content="KC Endodontics logo" />
+
+    {structuredData && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
