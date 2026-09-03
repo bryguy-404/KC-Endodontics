@@ -29,7 +29,7 @@ const dropdownAlignment = (index: number) => {
       </span>
     </a>
 
-    <nav aria-label="Primary navigation" class="desktop-nav hidden self-stretch items-center gap-1 text-[0.74rem] font-bold xl:flex 2xl:gap-2 2xl:text-[0.78rem]">
+    <nav aria-label="Primary navigation" class="desktop-nav hidden self-stretch items-center gap-1 text-[0.74rem] font-bold xl:flex">
       {navItems.map((item, index) => (
         "children" in item ? (
           <div class="nav-group relative flex h-full items-center py-2">
@@ -37,7 +37,7 @@ const dropdownAlignment = (index: number) => {
               href={item.href}
               aria-current={pathname === item.href ? "page" : undefined}
               class:list={[
-                "desktop-nav-link flex min-h-11 items-center gap-1.5 rounded-full px-2.5 transition-colors 2xl:px-3",
+                "desktop-nav-link flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 transition-colors",
                 isActive(item.href) && "is-active text-primary-dark",
               ]}
             >
@@ -72,7 +72,7 @@ const dropdownAlignment = (index: number) => {
             href={item.href}
             aria-current={pathname === item.href ? "page" : undefined}
             class:list={[
-              "desktop-nav-link flex min-h-11 items-center rounded-full px-2.5 transition-colors 2xl:px-3",
+              "desktop-nav-link flex min-h-11 items-center whitespace-nowrap rounded-full px-2.5 transition-colors",
               isActive(item.href) && "is-active text-primary-dark",
             ]}
           >{item.label}</a>
