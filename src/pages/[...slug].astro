@@ -21,7 +21,7 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, description, eyebrow, summary, template, urgent, urgentText, related } = entry.data;
+const { title, heading, metaTitle, description, eyebrow, summary, template, urgent, urgentText, related, sidebarText, closingTitle, closingText, faqs } = entry.data;
 const isLanding = template === "landing";
 const slug = entry.data.slug;
 const isRootCanalChild = entry.data.slug.startsWith("procedures/root-canal/");
@@ -77,14 +77,22 @@ const structuredData = {
         "@type": "ListItem",
         position: index + 1,
         name: crumb.label,
-        ...(crumb.href ? { item: new URL(crumb.href, site.url).href } : {}),
+        item: new URL(crumb.href ?? `/${slug}/`, site.url).href,
       })),
     },
+    ...(faqs.length > 0 ? [{
+      "@type": "FAQPage",
+      mainEntity: faqs.map(({ question, answer }) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer },
+      })),
+    }] : []),
   ],
 };
 ---
 
-<Layout title={`${title} | ${site.name}`} description={description} structuredData={structuredData}>
+<Layout title={metaTitle ?? `${title} | ${site.name}`} description={description} structuredData={structuredData}>
   <UtilityBar />
   <Header />
 
@@ -109,14 +117,14 @@ const structuredData = {
           <div>
             <p class="eyebrow text-secondary">{eyebrow}</p>
             <h1 class="font-heading mt-4 max-w-4xl text-5xl font-semibold leading-[1.04] tracking-[-.035em] sm:text-6xl lg:text-7xl">
-              {title}
+              {heading ?? title}
             </h1>
             <p class="mt-6 max-w-3xl text-lg leading-8 text-lede sm:text-xl sm:leading-9">{summary}</p>
           </div>
 
           <div class="rounded-md bg-primary-dark p-6 text-white shadow-[0_20px_50px_rgb(63_98_126/.2)] sm:p-7">
             <p class="text-xs font-bold uppercase tracking-[.16em] text-white/60">Talk with our team</p>
-            <p class="font-heading mt-3 text-2xl font-semibold leading-snug">A calm, clear next step starts with a conversation.</p>
+            <p class="font-heading mt-3 text-2xl font-semibold leading-snug">{sidebarText ?? "A calm, clear next step starts with a conversation."}</p>
             <a href={site.phone.href} class="button-inverse mt-6 w-full">Call {site.phone.display}</a>
           </div>
         </div>
@@ -136,6 +144,20 @@ const structuredData = {
       <div class="shell grid gap-14 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-20">
         <article class="prose-content max-w-3xl">
           <Content />
+          {faqs.length > 0 && (
+            <section class="sedation-section" aria-labelledby="sedation-faq-title">
+              <p class="eyebrow text-secondary">Frequently asked questions</p>
+              <h2 id="sedation-faq-title">What to know before your visit.</h2>
+              <div class="sedation-faqs">
+                {faqs.map(({ question, answer }) => (
+                  <details>
+                    <summary>{question}</summary>
+                    <p>{answer}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
         </article>
 
         <aside class="lg:order-last">
@@ -224,7 +246,7 @@ const structuredData = {
         <div>
           <p class="eyebrow text-white/55">KC Endodontics</p>
           <h2 class="font-heading mt-3 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
-            {isPatientPage || isInstructionPage
+            {closingTitle ?? (isPatientPage || isInstructionPage
               ? "Questions before or after your visit?"
               : isReferringPage
                 ? "Would you like to discuss a case?"
@@ -232,8 +254,9 @@ const structuredData = {
                   ? "Ready to speak with our team?"
                   : isUtilityPage
                     ? "Need help finding something?"
-                  : "Questions about your tooth or treatment?"}
+                  : "Questions about your tooth or treatment?")}
           </h2>
+          {closingText && <p class="mt-4 text-lg leading-8 text-white/85">{closingText}</p>}
         </div>
         <a href={site.phone.href} class="button-inverse shrink-0">Call {site.phone.display}</a>
       </div>

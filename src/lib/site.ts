@@ -44,6 +44,7 @@ export const navItems = [
       { label: "Apicoectomy", href: "/procedures/apicoectomy/" },
       { label: "Cracked Teeth", href: "/procedures/cracked-teeth/" },
       { label: "Traumatic Injuries", href: "/procedures/traumatic-injuries/" },
+      { label: "Sedation Dentistry", href: "/procedures/sedation-dentistry/" },
     ],
   },
   {
@@ -111,3 +112,47 @@ export const navItems = [
   },
   { label: "Contact Us", href: "/contact-us/" },
 ] as const;
+
+// Shared practice entity for every page.
+export const dentistStructuredData = {
+  "@context": "https://schema.org",
+  "@id": `${site.url}/#dentist`,
+  "@type": "Dentist",
+  name: site.name,
+  url: site.url,
+  telephone: site.phone.display,
+  faxNumber: site.fax,
+  image: new URL("/logo.jpg", site.url).href,
+  sameAs: [site.facebookUrl],
+  description: site.description,
+  medicalSpecialty: "Endodontics",
+  availableService: [{
+    "@type": "MedicalProcedure",
+    name: "Sedation Dentistry",
+    url: new URL("/procedures/sedation-dentistry/", site.url).href,
+  }],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.state,
+    postalCode: site.address.zip,
+    addressCountry: "US",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Monday",
+      opens: "08:00",
+      closes: "16:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Wednesday", "Thursday"],
+      opens: "08:00",
+      closes: "16:00",
+    },
+  ],
+  hasMap: site.mapsUrl,
+  areaServed: "Kansas City metropolitan area",
+};

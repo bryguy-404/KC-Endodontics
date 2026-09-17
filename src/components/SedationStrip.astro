@@ -1,0 +1,21 @@
+---
+import { site } from "../lib/site";
+---
+
+<section class="sedation-strip bg-primary-dark py-16 text-white sm:py-20" aria-labelledby="sedation-strip-title">
+  <div class="shell grid gap-10 lg:grid-cols-[1.3fr_.7fr] lg:items-center lg:gap-16">
+    <div>
+      <p class="eyebrow text-white/80">Comfort options at KC Endodontics</p>
+      <h2 id="sedation-strip-title" class="font-heading mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-[-.02em] sm:text-5xl">Relax. We Offer Sedation Dentistry.</h2>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-white/85">Nervous about a root canal? You are not alone. KC Endodontics offers sedation for endodontic treatment, supported by a board-eligible anesthesiologist, and accepts Missouri Medicaid for sedation dentistry. Eligibility and benefits are verified before treatment, and nitrous oxide is available when appropriate.</p>
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a class="button-inverse" href="/procedures/sedation-dentistry/">Explore Sedation Dentistry <span aria-hidden="true">→</span></a>
+        <a class="button-inverse button-outline-inverse" href={site.phone.href}>Call {site.phone.display}</a>
+      </div>
+    </div>
+    <aside class="rounded-md border border-white/25 bg-white/10 p-7 sm:p-9">
+      <p class="eyebrow text-white/80">An added level of support</p>
+      <p class="font-heading mt-4 text-3xl font-semibold leading-snug">A board-eligible anesthesiologist helps support a carefully planned, comfort-focused visit.</p>
+    </aside>
+  </div>
+</section>
