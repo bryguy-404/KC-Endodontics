@@ -1,0 +1,17 @@
+---
+import { site } from "../lib/site";
+
+const address = `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`;
+const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+---
+
+<iframe
+  src={mapUrl}
+  title="Map to KC Endodontics at 3700 W. 83rd Street, Suite 106, Prairie Village, Kansas"
+  width="720"
+  height="360"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  class="mt-8 w-full rounded-sm border border-border"
+  allowfullscreen
+></iframe>

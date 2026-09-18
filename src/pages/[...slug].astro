@@ -46,6 +46,21 @@ const section = isPatientPage
       ? { label: "Treatments", href: "/procedures/", root: "procedures" }
       : null;
 
+const sectionCallText = isPatientPage
+  ? "Not sure what you need? Call and the team will walk you through it."
+  : isReferringPage
+    ? "Have a case to discuss? Dr. Moore takes calls from referring offices directly."
+    : section?.root === "procedures"
+      ? "Questions about your tooth? Call and we will help you sort out the next step."
+      : isInstructionPage
+        ? "Questions about your care instructions? Call the team for help."
+        : isContactPage
+          ? "Call for appointments, directions or help with a referral."
+          : isMeetPage
+            ? "Call to learn more about Dr. Moore and your first visit."
+            : "Call the office for help finding the information you need.";
+const showHeroEyebrow = slug === "procedures/sedation-dentistry" || slug === "procedures/apicoectomy";
+
 const breadcrumbs = [
   { label: "Home", href: "/" },
   ...(section && slug !== section.root
@@ -115,8 +130,8 @@ const structuredData = {
 
         <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
           <div>
-            <p class="eyebrow text-secondary">{eyebrow}</p>
-            <h1 class="font-heading mt-4 max-w-4xl text-5xl font-semibold leading-[1.04] tracking-[-.035em] sm:text-6xl lg:text-7xl">
+            {showHeroEyebrow && <p class="eyebrow text-secondary">{eyebrow}</p>}
+            <h1 class:list={[showHeroEyebrow && "mt-4", "font-heading max-w-4xl text-5xl font-semibold leading-[1.04] tracking-[-.035em] sm:text-6xl lg:text-7xl"]}>
               {heading ?? title}
             </h1>
             <p class="mt-6 max-w-3xl text-lg leading-8 text-lede sm:text-xl sm:leading-9">{summary}</p>
@@ -124,7 +139,7 @@ const structuredData = {
 
           <div class="rounded-md bg-primary-dark p-6 text-white shadow-[0_20px_50px_rgb(63_98_126/.2)] sm:p-7">
             <p class="text-xs font-bold uppercase tracking-[.16em] text-white/60">Talk with our team</p>
-            <p class="font-heading mt-3 text-2xl font-semibold leading-snug">{sidebarText ?? "A calm, clear next step starts with a conversation."}</p>
+            <p class="font-heading mt-3 text-2xl font-semibold leading-snug">{sidebarText ?? sectionCallText}</p>
             <a href={site.phone.href} class="button-inverse mt-6 w-full">Call {site.phone.display}</a>
           </div>
         </div>
@@ -163,22 +178,7 @@ const structuredData = {
         <aside class="lg:order-last">
           <div class="space-y-5 lg:sticky lg:top-32">
             <div class="rounded-md border border-border bg-surface p-6">
-              <p class="eyebrow text-primary-dark">
-                {isPatientPage
-                  ? "Patient resources"
-                  : isInstructionPage
-                    ? "Visit guidance"
-                    : isReferringPage
-                      ? "Referral partnership"
-                      : isMeetPage
-                        ? "Your specialist"
-                        : isContactPage
-                          ? "Prairie Village office"
-                          : isUtilityPage
-                            ? "Website information"
-                          : "Specialist care"}
-              </p>
-              <h2 class="font-heading mt-3 text-2xl font-semibold leading-tight">
+              <h2 class="font-heading text-2xl font-semibold leading-tight">
                 {isPatientPage
                   ? "Prepared, informed, and never rushed."
                   : isInstructionPage
@@ -244,8 +244,7 @@ const structuredData = {
     <section class="bg-primary-dark py-14 text-white sm:py-16">
       <div class="shell flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <p class="eyebrow text-white/55">KC Endodontics</p>
-          <h2 class="font-heading mt-3 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
+          <h2 class="font-heading max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
             {closingTitle ?? (isPatientPage || isInstructionPage
               ? "Questions before or after your visit?"
               : isReferringPage

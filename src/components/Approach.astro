@@ -1,7 +1,9 @@
 ---
+import { Image } from "astro:assets";
+import office from "../assets/office-detail.jpg";
 const values = [
   { title: "Care and commitment", body: "Your safety and comfort are our priority." },
-  { title: "Honesty and affordability", body: "Up-front information on cost, and Missouri Medicaid accepted for sedation." },
+  { title: "Honesty and affordability", body: "Up-front information on cost. Missouri Medicaid accepted for sedation cases." },
   { title: "Comfort", body: "Clear communication can help alleviate dental fear." },
   { title: "Personalized service", body: "We take an interest in you and your oral health needs." },
 ];
@@ -11,8 +13,11 @@ const values = [
   <div class="shell grid items-center gap-12 lg:grid-cols-[.94fr_1.06fr] lg:gap-20">
     <figure class="relative min-h-[380px] sm:min-h-[520px]">
       <div aria-hidden="true" class="absolute -bottom-4 -left-4 h-[88%] w-[88%] rounded-lg bg-primary-soft"></div>
-      <img
-        src="/office-detail.jpg"
+      <Image
+        src={office}
+        format="webp"
+        widths={[400, 640, 960, 1200]}
+        sizes="(min-width: 1280px) 520px, (min-width: 1024px) 43vw, (min-width: 640px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
         alt="A bright, modern dental treatment room prepared for a patient"
         width="1600"
         height="1067"
@@ -26,10 +31,7 @@ const values = [
     </figure>
 
     <div>
-      <p class="eyebrow text-secondary">
-        Why choose KC Endodontics
-      </p>
-      <h2 class="font-heading mt-4 text-4xl font-semibold leading-tight tracking-[-.02em] sm:text-5xl">
+      <h2 class="font-heading text-4xl font-semibold leading-tight tracking-[-.02em] sm:text-5xl">
         Professional by design. Personal by nature.
       </h2>
       <p class="mt-6 text-lg leading-8 text-copy">
@@ -41,10 +43,9 @@ const values = [
         professionals who take your oral health very seriously. Everything is
         designed around a clean, comfortable, and carefully prepared experience.
       </p>
-      <div class="mt-9 grid gap-3 sm:grid-cols-2">
+      <div class="mt-9 grid gap-x-8 gap-y-6 sm:grid-cols-2">
         {values.map((value) => (
-          <div class="rounded-sm border border-border/80 bg-surface p-4">
-            <span aria-hidden="true" class="mb-3 block h-1.5 w-8 rounded-full bg-primary"></span>
+          <div>
             <strong class="text-sm">{value.title}</strong>
             <p class="mt-1 text-sm leading-6 text-copy">{value.body}</p>
           </div>

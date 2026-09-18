@@ -1,0 +1,18 @@
+---
+import { site } from "../lib/site";
+---
+
+<section aria-labelledby="medicaid-band-title" class="border-y border-primary/15 bg-primary-soft/55 py-10 sm:py-12">
+  <div class="shell grid gap-8 lg:grid-cols-[2fr_1fr] lg:items-center lg:gap-16">
+    <div>
+      <p class="eyebrow text-secondary">Insurance</p>
+      <h2 id="medicaid-band-title" class="font-heading mt-3 text-3xl font-semibold leading-tight sm:text-4xl">Yes, we are in Kansas. Yes, we accept Missouri Medicaid.</h2>
+      <p class="mt-4 max-w-3xl leading-7 text-copy">KC Endodontics in Prairie Village accepts Missouri Medicaid for sedation cases. Eligibility and benefits are verified before treatment. Call with your plan information and the team will handle the rest.</p>
+      <p class="mt-3 font-semibold text-primary-dark">All patients are welcome to ask about sedation, whatever your insurance.</p>
+    </div>
+    <div class="flex flex-col items-start gap-4 lg:items-center">
+      <a href={site.phone.href} class="button-primary">Call {site.phone.display}</a>
+      <a href="/procedures/sedation-dentistry/" class="font-bold text-accent underline underline-offset-4">How sedation works <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

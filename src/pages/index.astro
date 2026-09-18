@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import UtilityBar from "../components/UtilityBar.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import StatBand from "../components/StatBand.astro";
+import MedicaidBand from "../components/MedicaidBand.astro";
 import Welcome from "../components/Welcome.astro";
 import Treatments from "../components/Treatments.astro";
 import SedationStrip from "../components/SedationStrip.astro";
@@ -30,7 +30,7 @@ const structuredData = {
 
 <Layout
   title="KC Endodontics | Endodontist in Prairie Village, KS"
-  description="KC Endodontics provides professional, compassionate endodontic specialty care in Prairie Village, Kansas, including root canal treatment, retreatment, and endodontic surgery."
+  description="KC Endodontics provides root canal treatment, retreatment, endodontic surgery and sedation dentistry in Prairie Village, Kansas."
   structuredData={structuredData}
 >
   <UtilityBar />
@@ -38,7 +38,7 @@ const structuredData = {
 
   <main id="main-a">
     <Hero />
-    <StatBand />
+    <MedicaidBand />
     <Welcome />
     <Treatments />
     <SedationStrip />
